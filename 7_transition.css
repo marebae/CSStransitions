@@ -113,15 +113,15 @@ article {
     background-color: transparent;
     padding: 20px;
     color: #999;
-    max-height: 320px;
-    overflow: hidden;
     transition: all 2s ease;
+    transform: scale(1);
+    position: relative;
 }
 
 /* Article hover - text becomes darker and expands over 2 seconds */
 article:hover {
     color: #000;
-    max-height: 1000px;
+    transform: scale(1.05);
 }
 
 article h2 {
@@ -131,11 +131,27 @@ article h2 {
     transition: color 2s ease;
 }
 
-article p {
+/* Wrapper for text content that will be clipped */
+article p:first-of-type {
     text-align: justify;
     line-height: 1.6;
     margin-bottom: 15px;
     color: inherit;
+    max-height: 200px;
+    overflow: hidden;
+    transition: max-height 2s ease;
+}
+
+article p:last-child {
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: inherit;
+}
+
+/* Expand text on hover */
+article:hover p:first-of-type {
+    max-height: 1000px;
 }
 
 /* First letter of article's main text - Times New Roman, 36px */
@@ -207,5 +223,3 @@ address span {
 address a {
     color: lightblue;
 }
-
-
